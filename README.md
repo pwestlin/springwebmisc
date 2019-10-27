@@ -1,11 +1,11 @@
 # springwebmisc
 
-Branch | Content
+Branch | Content | Status
 --- | ---
-master | MVC
-functional_mvc | Functional MVC
-webflux_mvc | Webflux MVC
-functional_webflux | Functional Webflux 
-coroutines_mvc | Coroutines MVC
-functional_coroutines | Functional Coroutines
-kofu_coroutines | Kofu coroutines  
+master | MVC | Not implemented
+functional_mvc | Functional MVC | Not implemented
+webflux_mvc | Webflux MVC | Not implemented
+functional_webflux | Functional Webflux | Not implemented 
+coroutines_mvc | Coroutines MVC | Not implemented
+functional_coroutines | Functional Coroutines | Not implemented
+kofu_coroutines | Kofu coroutines | Not implemented  
