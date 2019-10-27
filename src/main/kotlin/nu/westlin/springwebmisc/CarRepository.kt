@@ -1,9 +1,6 @@
 package nu.westlin.springwebmisc
 
 import nu.westlin.springwebmisc.Car.Brand
-import nu.westlin.springwebmisc.Car.Brand.PORSCHE
-import nu.westlin.springwebmisc.Car.Brand.SUBARU
-import nu.westlin.springwebmisc.Car.Brand.VOLVO
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -14,7 +11,7 @@ class CarRepository {
      * Initialises repo with some cars
      */
     fun init() {
-        cars.addAll(listOf(Car(1, VOLVO, 1964), Car(2, VOLVO, 2019), Car(3, PORSCHE, 2007), Car(4, SUBARU, 2000)))
+        cars.addAll(nu.westlin.springwebmisc.cars)
     }
 
     /**
