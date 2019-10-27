@@ -1,7 +1,7 @@
 # springwebmisc
 
 Branch | Content | Status
---- | ---
+--- | --- | ---
 master | MVC | Not implemented
 functional_mvc | Functional MVC | Not implemented
 webflux_mvc | Webflux MVC | Not implemented
