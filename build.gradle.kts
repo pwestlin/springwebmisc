@@ -23,27 +23,43 @@ repositories {
 }
 
 dependencies {
-    // TODO petves: Remove flux-stuff in MVC
-
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
-    testImplementation("io.projectreactor:reactor-test")
     testImplementation("io.mockk:mockk:1.9.3")
     testImplementation("com.ninja-squad:springmockk:1.1.3")
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
+
+    include("**/*Test.class")
+
+    addTestListener(object : TestListener {
+        override fun beforeTest(p0: TestDescriptor?) = Unit
+        override fun beforeSuite(p0: TestDescriptor?) = Unit
+        override fun afterTest(desc: TestDescriptor, result: TestResult) = Unit
+        override fun afterSuite(desc: TestDescriptor, result: TestResult) {
+            printResults(desc, result)
+        }
+    })
+}
+
+fun printResults(desc: TestDescriptor, result: TestResult) {
+    if (desc.parent == null) {
+        val output = "${desc.name} results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+        val startItem = "|  "
+        val endItem = "  |"
+        val repeatLength = startItem.length + output.length + endItem.length
+        println("\n" + ("-".repeat(repeatLength)) + "\n" + startItem + output + endItem + "\n" + ("-".repeat(repeatLength)))
+    }
 }
 
 tasks.withType<KotlinCompile> {
@@ -52,3 +68,4 @@ tasks.withType<KotlinCompile> {
         jvmTarget = "1.8"
     }
 }
+

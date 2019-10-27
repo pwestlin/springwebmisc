@@ -15,7 +15,6 @@ fun main(args: Array<String>) {
 
 @Component
 class MyApplicationListener(private val carRepository: CarRepository) : ApplicationListener<ApplicationReadyEvent> {
-    // TODO petves: Should this be on the repo itself?
     override fun onApplicationEvent(event: ApplicationReadyEvent) {
         carRepository.init()
     }
