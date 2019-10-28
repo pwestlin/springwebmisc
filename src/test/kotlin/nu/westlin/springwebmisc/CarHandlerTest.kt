@@ -4,26 +4,35 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
 import nu.westlin.springwebmisc.Car.Brand.VOLVO
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType.APPLICATION_JSON
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
+import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import org.springframework.web.context.WebApplicationContext
 
-@SpringJUnitConfig
-@WebMvcTest(controllers = [CarController::class])
-internal open class CarControllerTest {
+@SpringBootTest
+internal class CarHandlerTest {
 
-    @Autowired
     private lateinit var mvc: MockMvc
 
     @Autowired
     private lateinit var objectMapper: ObjectMapper
 
-    @MockkBean
+    @Autowired
+    private lateinit var appContext: WebApplicationContext
+
+
+    @MockkBean(relaxed = true)
     private lateinit var repository: CarRepository
+
+    @BeforeEach
+    fun setup() {
+        mvc = MockMvcBuilders.webAppContextSetup(appContext).build();
+    }
 
     @Test
     fun `all cars`() {
@@ -124,5 +133,4 @@ internal open class CarControllerTest {
             content { json("[]") }
         }
     }
-
 }

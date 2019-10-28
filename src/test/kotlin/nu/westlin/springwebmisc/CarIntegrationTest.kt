@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.client.getForEntity
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-internal class CarControllerIntegrationTest {
+internal class CarIntegrationTest {
 
     private val restTemplate = RestTemplateBuilder().rootUri("http://localhost:8080/cars").build()
 

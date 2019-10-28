@@ -1,4 +1,4 @@
 logging:
   level:
     nu.westlin.springwebmisc: DEBUG
-    root: WARN
+    root: INFO

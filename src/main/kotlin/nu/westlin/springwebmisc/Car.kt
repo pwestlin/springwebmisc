@@ -9,7 +9,8 @@ data class Car(val id: Int, val brand: Brand, val year: Int) {
 
         companion object {
             fun fromString(value: String): Brand {
-                return values().find { it.value == value } ?: throw IllegalArgumentException("'$value' is not a valid brand")
+                return values().find { it.value.toLowerCase() == value.toLowerCase() }
+                    ?: throw IllegalArgumentException("'$value' is not a valid brand")
             }
         }
     }
