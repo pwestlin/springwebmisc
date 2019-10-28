@@ -53,13 +53,11 @@ tasks.withType<Test> {
 }
 
 fun printResults(desc: TestDescriptor, result: TestResult) {
-    if (desc.parent == null) {
-        val output = "${desc.name} results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
-        val startItem = "|  "
-        val endItem = "  |"
-        val repeatLength = startItem.length + output.length + endItem.length
-        println("\n" + ("-".repeat(repeatLength)) + "\n" + startItem + output + endItem + "\n" + ("-".repeat(repeatLength)))
-    }
+    val output = "${desc.name} results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+    val tartItem = "|  "
+    val endItem = "  |"
+    val repeatLength = startItem.length + output.length + endItem.length
+    println("\n" + ("-".repeat(repeatLength)) + "\n" + startItem + output + endItem + "\n" + ("-".repeat(repeatLength)))
 }
 
 tasks.withType<KotlinCompile> {
