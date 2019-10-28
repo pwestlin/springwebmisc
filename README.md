@@ -3,7 +3,7 @@
 Branch | Content | Status
 --- | --- | ---
 master | MVC | Implemented
-functional_mvc | Functional MVC | Not implemented
+functional_mvc | Functional MVC | Implemented
 webflux_mvc | Webflux MVC | Not implemented
 functional_webflux | Functional Webflux | Not implemented 
 coroutines_mvc | Coroutines MVC | Not implemented
